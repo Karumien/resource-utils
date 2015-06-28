@@ -30,7 +30,8 @@ public class ResourcePropertyDaoImpl extends JdbcDaoSupport implements ResourceP
     public List<ResourceProperty> loadAllValid(String application, String location) {
 
         List<Map<String, Object>> rows = this.getJdbcTemplate().queryForList(
-                "SELECT * FROM CFG_RES_PROPS WHERE APPLICATION = ? AND VALID_TO IS NOT NULL", application);
+                        "SELECT * FROM CFG_RES_PROPS WHERE (APPLICATION = ? AND APPLICATION IS NOT NULL OR APPLICATION IS NULL) AND VALID_TO IS NOT NULL",
+                        application);
         List<ResourceProperty> resourceProperties = new ArrayList<ResourceProperty>();
 
         for (Map<String, Object> row : rows) {
