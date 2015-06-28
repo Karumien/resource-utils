@@ -21,8 +21,9 @@ import cz.i24.util.resource.service.ResourcePropertyService;
 /**
  * Definice konfigurace logovani Log4j s moznosti refresh v runtime.
  *
- * @author <a href="mailto:miroslav.svoboda@ness.com">Ing. Miroslav Svoboda</a>
- * @date 5. 11. 2013 13:25:45
+ * @author <a href="miroslav.svoboda@karumien.com">Miroslav Svoboda</a>
+ * @version 1.0
+ * @since 27.04.2014 10:11:12
  */
 @Data
 public class Log4jResourceConfiguration implements InitializingBean {
