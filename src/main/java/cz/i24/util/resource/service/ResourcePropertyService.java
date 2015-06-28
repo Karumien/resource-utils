@@ -26,10 +26,14 @@ public interface ResourcePropertyService {
     /**
      * Nacte finalni verzi nastaveni dle klice a vsech pripravenych nastaveni.
      *
-     * @param application oznaceni aplikace
-     * @param locations seznam vsech nastaveni
-     * @param noupgrade seznam nastaveni, ktere nemaji aplikovat zmeny v DB
-     * @param noDB konfigurace nacitane pouze ze souboru
+     * @param application
+     *            oznaceni aplikace
+     * @param locations
+     *            seznam vsech nastaveni
+     * @param noupgrade
+     *            seznam nastaveni, ktere nemaji aplikovat zmeny v DB
+     * @param noDB
+     *            konfigurace nacitane pouze ze souboru
      * @return {@link Properties} finalni nastaveni systemu
      */
     Properties getMergedProperties(String application, List<Resource> locations, List<String> noupgrade, boolean noDB);
@@ -37,7 +41,8 @@ public interface ResourcePropertyService {
     /**
      * Preklad hodnot {@link ResourceProperty} na {@link Properties}.
      *
-     * @param validProperties seznam hodnot zdroju
+     * @param validProperties
+     *            seznam hodnot zdroju
      * @return {@link Properties} prelozeny seznam
      */
     Properties getProperties(List<ResourceProperty> validProperties);
@@ -45,17 +50,28 @@ public interface ResourcePropertyService {
     /**
      * Nacte vsechny validni nastaveni z DB dle aplikace a zdrojove konfigurace.
      * 
-     * @param application oznaceni aplikace
-     * @param location konfiguracni souboru
-     * @return
+     * @param application
+     *            oznaceni aplikace
+     * @param location
+     *            konfiguracni souboru
+     * @return {@link List} aktivni konfigurace
      */
     List<ResourceProperty> loadAllValid(String application, String location);
 
     /**
-     * Update nastaveni, pokud neni readonly DB.
+     * Nazev aplikace (klic konfigurace).
      * 
-     * @param entity
+     * @return {@link String} nazev aplikace
      */
+    String getApplication();
+
+    /**
+     * Vraci <code>true</code> pro lokalni nedatabazovou konfiguraci -DdevOnly
+     * 
+     * @return boolean <code>true</code> pro lokalni nedatabazovou konfiguraci
+     */
+    boolean isDev();
+
     // void saveOrUpdate(ResourceProperty entity);
 
 }

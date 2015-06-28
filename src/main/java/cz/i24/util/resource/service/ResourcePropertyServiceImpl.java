@@ -13,6 +13,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.core.io.Resource;
@@ -32,13 +35,19 @@ import cz.i24.util.resource.entity.ResourceProperty;
 public class ResourcePropertyServiceImpl implements ResourcePropertyService {
 
     /** DAO */
+    @Setter
     private ResourcePropertyDao resourcePropertyDao;
+
+    /** Typ prostredi */
+    @Setter
+    @Getter
+    private String application;
 
     /**
      * {@inheritDoc}
      */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Properties getMergedProperties(String application, List<Resource> locations, List<String> noupgrade,
             boolean noDB) {
 
@@ -125,10 +134,14 @@ public class ResourcePropertyServiceImpl implements ResourcePropertyService {
     /**
      * Ziska seznam sloucenych zdroju {@link ResourceProperty} se zmenou stavu pro jejich persistenci.
      *
-     * @param existingProperties existujici zdroje v DB
-     * @param locationProperties stavajici seznam zdroju v souboru
-     * @param application nazev aplikace
-     * @param filename nazev souboru
+     * @param existingProperties
+     *            existujici zdroje v DB
+     * @param locationProperties
+     *            stavajici seznam zdroju v souboru
+     * @param application
+     *            nazev aplikace
+     * @param locationName
+     *            nazev souboru
      * @return {@link List} z {@link ResourceProperty} seznam sloucenych zdroju se zmenou stavu
      */
     protected List<ResourceProperty> mergeProperties(List<ResourceProperty> existingProperties,
@@ -163,15 +176,6 @@ public class ResourcePropertyServiceImpl implements ResourcePropertyService {
     }
 
     /**
-     * Nastavuje hodnotu hodnotu atributu resourcePropertyDao.
-     *
-     * @param resourcePropertyDao nastavuje resourcePropertyDao
-     */
-    public void setResourcePropertyDao(ResourcePropertyDao resourcePropertyDao) {
-        this.resourcePropertyDao = resourcePropertyDao;
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -179,6 +183,12 @@ public class ResourcePropertyServiceImpl implements ResourcePropertyService {
     public List<ResourceProperty> loadAllValid(String application, String location) {
         return this.resourcePropertyDao.loadAllValid(application, location);
 	}
+
+    @Override
+    public boolean isDev() {
+        return System.getProperty("devOnly") != null;
+    }
+
 
     // /**
     // * {@inheritDoc}
