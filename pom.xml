@@ -9,7 +9,7 @@
 
 	<groupId>cz.i24.util</groupId>
 	<artifactId>resource-utils</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 
 	<name>i24: Utils - Property Resource Utils</name>
 	<description>Property Resource Utils for projects i24 - reading configuration from DB (for Spring or application)</description>
@@ -72,9 +72,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://github.com/karumien/resource-utils/tags/resource-utils-1.0.1</connection>
-		<developerConnection>scm:svn:https://github.com/karumien/resource-utils/tags/resource-utils-1.0.1</developerConnection>
-		<url>https://github.com/karumien/resource-utils/tags/resource-utils-1.0.1</url>
+		<connection>scm:svn:https://github.com/karumien/resource-utils/trunk</connection>
+		<developerConnection>scm:svn:https://github.com/karumien/resource-utils/trunk</developerConnection>
+		<url>https://github.com/karumien/resource-utils/trunk</url>
 	</scm>
 
 </project>
