@@ -9,7 +9,7 @@
 
 	<groupId>cz.i24.util</groupId>
 	<artifactId>resource-utils</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>i24: Utils - Property Resource Utils</name>
 	<description>Property Resource Utils for projects i24 - reading configuration from DB (for Spring or application)</description>
