@@ -43,6 +43,11 @@ public class ResourcePropertyServiceImpl implements ResourcePropertyService {
     @Getter
     private String application;
 
+    /** Prepsat vyvoj */
+    @Setter
+    @Getter
+    private boolean devOnly;
+
     /**
      * {@inheritDoc}
      */
@@ -186,7 +191,7 @@ public class ResourcePropertyServiceImpl implements ResourcePropertyService {
 
     @Override
     public boolean isDev() {
-        return System.getProperty("devOnly") != null;
+        return this.devOnly || System.getProperty("devOnly") != null;
     }
 
 
