@@ -40,19 +40,19 @@ public class ResourceProperty implements Serializable {
     private Long id;
 
     /** Prislusnost k systemu */
-    @Column(name = "[APPLICATION]", nullable = true, length = 100)
+    @Column(name = "CFG_APP", nullable = true, length = 100)
     private String application;
 
     /** Nazev zdroje / souboru */
-    @Column(name = "[LOCATION]", nullable = false, length = 500)
+    @Column(name = "CFG_LOCATION", nullable = false, length = 500)
     private String location;
 
     /** Nazev / klic */
-    @Column(name = "[NAME]", nullable = false, length = 500)
+    @Column(name = "CFG_NAME", nullable = false, length = 500)
     private String name;
 
     /** Hodnota */
-    @Column(name = "[VALUE]", nullable = true, length = 2048)
+    @Column(name = "CFG_VALUE", nullable = true, length = 2048)
     private String value;
 
     /** Datum vytvoreni - validni od */
